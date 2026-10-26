@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Natboa — deployment check</title>
+<style>
+:root{color-scheme:light;--bg:#f5f4ef;--fg:#202824;--muted:#53635a;--line:#bdc9c0;--accent:#365d48}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#141b17;--fg:#edf2ed;--muted:#b4c4b9;--line:#45564a;--accent:#b0dab9}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141b17;--fg:#edf2ed;--muted:#b4c4b9;--line:#45564a;--accent:#b0dab9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 system-ui,sans-serif}
+main{max-width:760px;margin:12vh auto;padding:32px}h1{font-size:clamp(36px,7vw,64px);line-height:1.1;letter-spacing:-.04em;margin:24px 0}
+p{max-width:55ch;color:var(--muted)}a{color:var(--accent)}button,select{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:10px 16px}
+button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:32px}#result{min-height:32px}
+</style>
+</head>
+<body>
+<main>
+<label for="theme">Appearance</label>
+<select id="theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select>
+<h1>Natboa’s portfolio<br>starts here.</h1>
+<p>This temporary page checks the publishing pipeline before the portfolio design begins.</p>
+<p>Website files are published through GitHub Pages. The finished design will replace this page using the same deployment process.</p>
+<div class="controls"><button id="test" type="button">Test the interaction</button><a href="https://github.com/Natboa">View my projects</a></div>
+<p id="result" role="status" aria-live="polite"></p>
+</main>
+<script>
+const root=document.documentElement;
+document.querySelector('#theme').addEventListener('change',event=>{const mode=event.target.value;if(mode==='system')delete root.dataset.theme;else root.dataset.theme=mode});
+document.querySelector('#test').addEventListener('click',()=>{document.querySelector('#result').textContent='JavaScript interaction confirmed. The deployment is working.'});
+</script>
+</body>
+</html>
