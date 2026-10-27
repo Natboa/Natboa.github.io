@@ -22,8 +22,8 @@
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch {}
   </script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="app.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -105,8 +105,8 @@
               <div class="project-links"><a href="https://github.com/Natboa/RadioV2">Windows source ↗</a><a href="https://github.com/Natboa/RadioV2-Android">Android source ↗</a></div>
             </div>
           </div>
-          <details class="project-preview">
-            <summary><span>View app previews</span><span class="expand" aria-hidden="true">+</span></summary>
+          <div class="project-preview">
+
             <div class="preview-content">
               <picture>
                 <source media="(max-width: 600px)" srcset="assets/radio-mobile.jpg" width="840" height="681">
@@ -116,7 +116,7 @@
               <img class="desktop-preview" src="assets/radio-desktop.jpg" alt="RadioV2 for Windows, with genre discovery, station artwork, favourites, and playback controls." width="1080" height="718" loading="lazy">
               <div class="preview-caption"><span>Also built for the desktop.</span><a href="https://github.com/Natboa/RadioV2/releases">Windows downloads ↗</a></div>
             </div>
-          </details>
+          </div>
         </article>
 
         <article class="project" id="terrain">
@@ -129,18 +129,16 @@
               <div class="project-links"><a href="https://mapyourtrip.vercel.app">Try the poster maker ↗</a></div>
             </div>
           </div>
-          <details class="project-preview" id="terrain-preview">
-            <summary><span>View the transformation</span><span class="expand" aria-hidden="true">+</span></summary>
+          <div class="project-preview" id="terrain-preview">
+
             <div class="preview-content">
-              <div class="terrain-preview-frame"><img id="terrain-animation" src="assets/terrain-still.jpg" alt="Lake Titicaca journey shown as a finished terrain poster." width="960" height="792" loading="lazy"></div>
+              <div class="terrain-preview-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/terrain-still.jpg"><img id="terrain-animation" src="assets/terrain-process.gif" alt="The actual Lake Titicaca map with trip pins becomes satellite imagery, then the finished three-dimensional terrain poster." width="960" height="792" loading="lazy"></picture></div>
               <div class="preview-caption">
                 <p>Places you’ve been. Art you can keep.</p>
-                <button class="play-button" id="play-terrain" type="button" aria-pressed="false" hidden>Play transformation</button>
               </div>
               <p class="asset-credit">Trip map: Google Maps. Contains modified Copernicus Sentinel data 2024. Routes: OpenStreetMap contributors (ODbL), via Valhalla. Terrain rendered in Blender.</p>
-              <p class="playback-status" id="playback-status" role="status"></p>
             </div>
-          </details>
+          </div>
         </article>
 
         <article class="project" id="recorder">
@@ -153,13 +151,13 @@
               <div class="project-links"><a href="https://github.com/Natboa/browser-video-recorder#install">Install the skill ↗</a><a href="https://github.com/Natboa/browser-video-recorder">Source ↗</a></div>
             </div>
           </div>
-          <details class="project-preview">
-            <summary><span>View the project</span><span class="expand" aria-hidden="true">+</span></summary>
+          <div class="project-preview">
+
             <div class="preview-content">
               <img class="wide-preview recorder-preview" src="assets/video-recorder.jpg" alt="Browser Video Recorder artwork, showing a browser video being recorded with OBS and saved locally." width="1376" height="430" loading="lazy">
               <div class="preview-caption"><p>A course link in. Local MP4 files out.</p><a href="https://github.com/Natboa/browser-video-recorder#readme">How it works ↗</a></div>
             </div>
-          </details>
+          </div>
         </article>
 
         <article class="project" id="attend">
@@ -172,13 +170,13 @@
               <div class="project-links"><a href="https://github.com/Natboa/Attend-Meditation-Aid/releases">Android downloads ↗</a><a href="https://github.com/Natboa/Attend-Meditation-Aid">Source ↗</a></div>
             </div>
           </div>
-          <details class="project-preview">
-            <summary><span>View the project</span><span class="expand" aria-hidden="true">+</span></summary>
+          <div class="project-preview">
+
             <div class="preview-content">
               <img class="wide-preview attend-preview" src="assets/attend.jpg" alt="Attend meditation app artwork, featuring a meditation timer, mindfulness bells, and 289 wisdom poems." width="1080" height="430" loading="lazy">
               <div class="preview-caption"><p>A quiet companion for daily practice. No account needed.</p></div>
             </div>
-          </details>
+          </div>
         </article>
         <a class="more-work text-link" href="https://github.com/Natboa?tab=repositories">More on GitHub <span aria-hidden="true">↗</span></a>
       </section>

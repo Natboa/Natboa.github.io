@@ -14,4 +14,4 @@ Existing approved project artwork, reused from Natboa/Natboa's profile assets an
 - favicon.svg: typographic n. mark using native text.
 - integrations/: self-hosted service logos for Greg's capability section. Sources and license in integrations/README.md. Previous Greg screenshot assets were removed at the owner's request.
 
-Animated GIF is loaded only on explicit request, stopped when collapsed or when the tab is hidden, and never autoplays.
+The terrain GIF autoplays and uses native lazy loading. Its picture element selects the still image when reduced motion is requested. All project artwork is visible by default with no expansion clicks.
