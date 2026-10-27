@@ -1,35 +1,202 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Natboa — deployment check</title>
-<style>
-:root{color-scheme:light;--bg:#f5f4ef;--fg:#202824;--muted:#53635a;--line:#bdc9c0;--accent:#365d48}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#141b17;--fg:#edf2ed;--muted:#b4c4b9;--line:#45564a;--accent:#b0dab9}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#141b17;--fg:#edf2ed;--muted:#b4c4b9;--line:#45564a;--accent:#b0dab9}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 system-ui,sans-serif}
-main{max-width:760px;margin:12vh auto;padding:32px}h1{font-size:clamp(36px,7vw,64px);line-height:1.1;letter-spacing:-.04em;margin:24px 0}
-p{max-width:55ch;color:var(--muted)}a{color:var(--accent)}button,select{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:10px 16px}
-button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:32px}#result{min-height:32px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Natboa, Software Engineering student at Braude Academic College. Explore my radio apps, terrain poster maker, and automation tools.">
+  <meta name="theme-color" content="#f3f5f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151c1d" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Natboa | Curious mind. Useful software.">
+  <meta property="og:description" content="Apps, landscapes, and the things between. Selected projects by a Software Engineering student.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://natboa.dev/">
+  <meta property="og:image" content="https://natboa.dev/assets/social.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://natboa.dev/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <title>Natboa | Curious mind. Useful software.</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('natboa-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-<main>
-<label for="theme">Appearance</label>
-<select id="theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select>
-<h1>Natboa’s portfolio<br>starts here.</h1>
-<p>This temporary page checks the publishing pipeline before the portfolio design begins.</p>
-<p>Website files are published through GitHub Pages. The finished design will replace this page using the same deployment process.</p>
-<div class="controls"><button id="test" type="button">Test the interaction</button><a href="https://github.com/Natboa">View my projects</a></div>
-<p id="result" role="status" aria-live="polite"></p>
-</main>
-<script>
-const root=document.documentElement;
-document.querySelector('#theme').addEventListener('change',event=>{const mode=event.target.value;if(mode==='system')delete root.dataset.theme;else root.dataset.theme=mode});
-document.querySelector('#test').addEventListener('click',()=>{document.querySelector('#result').textContent='JavaScript interaction confirmed. The deployment is working.'});
-</script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
+    <header class="site-nav">
+      <a class="wordmark" href="#top" aria-label="Natboa, back to top">natboa.</a>
+      <span class="role">Software engineering student</span>
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/Natboa" class="external">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="intro-title">
+        <div class="hero-copy enter">
+          <span class="availability">Exploring junior software roles</span>
+          <h1 id="intro-title">Curious mind.<span>Useful software.</span></h1>
+          <p>I'm Natboa, a software engineering student turning interesting problems into things you can actually use.</p>
+          <a class="text-link hero-link" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-objects enter enter-later">
+          <a class="terrain-print" href="#terrain" aria-label="Explore Shaded Relief Maps">
+            <img src="assets/terrain.jpg" alt="Lake Titicaca rendered as a three-dimensional terrain poster, with a red travel route and colourful pins." width="1800" height="1200" fetchpriority="high">
+          </a>
+          <a class="phone-object" href="#radio" aria-label="Explore RadioV2">
+            <img src="assets/phone.webp" alt="RadioV2 genre discovery inside an Android phone, including navigation buttons." width="500" height="958">
+          </a>
+          <p class="object-caption">Apps, landscapes, and the things between.</p>
+        </div>
+      </section>
+
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="section-head">
+          <h2 id="work-title">Selected work</h2>
+          <p>A few things that made it out of my editor.</p>
+        </div>
+
+        <article class="greg-project" id="greg" aria-labelledby="greg-title">
+          <div class="greg-copy">
+            <p class="greg-kicker">Personal AI assistant</p>
+            <h3 id="greg-title">Greg</h3>
+            <p class="greg-intro">Claude on Telegram.<br>Useful work, around the clock.</p>
+            <p class="greg-description">A personal assistant built around Claude Code, with persistent conversations, connected tools, and scheduled automation.</p>
+            <ul class="greg-integrations" aria-label="Services and tools Greg uses">
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/claude.svg');--brand-color:#d97757" aria-hidden="true"></span><span>Claude</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/telegram.svg');--brand-color:#269fdb" aria-hidden="true"></span><span>Telegram</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/gmail.svg');--brand-color:#ea4335" aria-hidden="true"></span><span>Gmail</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/googlecalendar.svg');--brand-color:#4285f4" aria-hidden="true"></span><span>Calendar</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/googledrive.svg');--brand-color:#24a15a" aria-hidden="true"></span><span>Drive</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/todoist.svg');--brand-color:#e44332" aria-hidden="true"></span><span>Todoist</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/googletasks.svg');--brand-color:#4285f4" aria-hidden="true"></span><span>Google Tasks</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/github.svg')" aria-hidden="true"></span><span>GitHub</span></li>
+              <li><img class="integration-image" src="assets/integrations/tavily.svg" width="28" height="28" alt="" aria-hidden="true"><span>Tavily</span></li>
+              <li><img class="integration-image" src="assets/integrations/groq.svg" width="28" height="28" alt="" aria-hidden="true"><span>Groq Whisper</span></li>
+              <li><span class="integration-icon" style="--brand-icon:url('assets/integrations/githubcopilot.svg')" aria-hidden="true"></span><span>GitHub Copilot</span></li>
+            </ul>
+            <p class="greg-extra-integration">Also connected to Gamma for presentation decks.</p>
+            <p class="greg-stack">Bun / TypeScript / Claude Code / Telegram</p>
+          </div>
+          <ul class="greg-capabilities" aria-label="Greg's capabilities">
+            <li><strong>Text, voice, and files.</strong> Chat in Hebrew or English with voice notes, photos, documents, and conversation history.</li>
+            <li><strong>Connected tools.</strong> Email, calendars, Drive, task lists, web search, and presentation decks.</li>
+            <li><strong>Reminders and proactive alerts.</strong> Timezone-aware reminders with Done/Snooze, plus flight changes, air quality, and system checks.</li>
+            <li><strong>Monthly payslip automation.</strong> Retrieves my payslip, uploads it to Google Drive, and sends me a Telegram message with the details.</li>
+            <li><strong>Overnight coding and research.</strong> Queues tasks for available Claude usage windows and returns pull requests or research reports.</li>
+            <li><strong>Memory and usage management.</strong> Saves approved facts, loads skills on demand, handles commands without model calls, and resumes queued messages after usage limits reset.</li>
+          </ul>
+        </article>
+
+        <article class="project" id="radio">
+          <div class="project-row">
+            <span class="project-number" aria-hidden="true">01</span>
+            <h3><a href="https://github.com/Natboa/RadioV2">RadioV2 <span aria-hidden="true">↗</span></a></h3>
+            <div class="project-description">
+              <p>Internet radio, from a Windows desktop to your phone.</p>
+              <p class="stack">C# / .NET / Flutter / Dart</p>
+              <div class="project-links"><a href="https://github.com/Natboa/RadioV2">Windows source ↗</a><a href="https://github.com/Natboa/RadioV2-Android">Android source ↗</a></div>
+            </div>
+          </div>
+          <details class="project-preview">
+            <summary><span>View app previews</span><span class="expand" aria-hidden="true">+</span></summary>
+            <div class="preview-content">
+              <picture>
+                <source media="(max-width: 600px)" srcset="assets/radio-mobile.jpg" width="840" height="681">
+                <img class="wide-preview" src="assets/radio.jpg" alt="Two RadioV2 Android screens, showing genre discovery and favourite stations, in black phone mockups on a purple background." width="1440" height="654" loading="lazy">
+              </picture>
+              <div class="preview-caption"><p>Discover a genre. Find a station. Keep listening.</p><a href="https://github.com/Natboa/RadioV2-Android/releases">Android downloads ↗</a></div>
+              <img class="desktop-preview" src="assets/radio-desktop.jpg" alt="RadioV2 for Windows, with genre discovery, station artwork, favourites, and playback controls." width="1080" height="718" loading="lazy">
+              <div class="preview-caption"><span>Also built for the desktop.</span><a href="https://github.com/Natboa/RadioV2/releases">Windows downloads ↗</a></div>
+            </div>
+          </details>
+        </article>
+
+        <article class="project" id="terrain">
+          <div class="project-row">
+            <span class="project-number" aria-hidden="true">02</span>
+            <h3><a href="https://mapyourtrip.vercel.app">Shaded Relief Maps <span aria-hidden="true">↗</span></a></h3>
+            <div class="project-description">
+              <p>Turn a place and a journey into a printable terrain poster.</p>
+              <p class="stack">Python / Blender / Geospatial data</p>
+              <div class="project-links"><a href="https://mapyourtrip.vercel.app">Try the poster maker ↗</a></div>
+            </div>
+          </div>
+          <details class="project-preview" id="terrain-preview">
+            <summary><span>View the transformation</span><span class="expand" aria-hidden="true">+</span></summary>
+            <div class="preview-content">
+              <div class="terrain-preview-frame"><img id="terrain-animation" src="assets/terrain-still.jpg" alt="Lake Titicaca journey shown as a finished terrain poster." width="960" height="792" loading="lazy"></div>
+              <div class="preview-caption">
+                <p>Places you’ve been. Art you can keep.</p>
+                <button class="play-button" id="play-terrain" type="button" aria-pressed="false" hidden>Play transformation</button>
+              </div>
+              <p class="asset-credit">Trip map: Google Maps. Contains modified Copernicus Sentinel data 2024. Routes: OpenStreetMap contributors (ODbL), via Valhalla. Terrain rendered in Blender.</p>
+              <p class="playback-status" id="playback-status" role="status"></p>
+            </div>
+          </details>
+        </article>
+
+        <article class="project" id="recorder">
+          <div class="project-row">
+            <span class="project-number" aria-hidden="true">03</span>
+            <h3><a href="https://github.com/Natboa/browser-video-recorder">Browser Video Recorder <span aria-hidden="true">↗</span></a></h3>
+            <div class="project-description">
+              <p>An agent skill that saves browser-only lessons for offline viewing.</p>
+              <p class="stack">Python / OBS Studio / Agent Skills</p>
+              <div class="project-links"><a href="https://github.com/Natboa/browser-video-recorder#install">Install the skill ↗</a><a href="https://github.com/Natboa/browser-video-recorder">Source ↗</a></div>
+            </div>
+          </div>
+          <details class="project-preview">
+            <summary><span>View the project</span><span class="expand" aria-hidden="true">+</span></summary>
+            <div class="preview-content">
+              <img class="wide-preview recorder-preview" src="assets/video-recorder.jpg" alt="Browser Video Recorder artwork, showing a browser video being recorded with OBS and saved locally." width="1376" height="430" loading="lazy">
+              <div class="preview-caption"><p>A course link in. Local MP4 files out.</p><a href="https://github.com/Natboa/browser-video-recorder#readme">How it works ↗</a></div>
+            </div>
+          </details>
+        </article>
+
+        <article class="project" id="attend">
+          <div class="project-row">
+            <span class="project-number" aria-hidden="true">04</span>
+            <h3><a href="https://github.com/Natboa/Attend-Meditation-Aid">Attend <span aria-hidden="true">↗</span></a></h3>
+            <div class="project-description">
+              <p>A meditation timer, mindfulness bells, and a little room to pause.</p>
+              <p class="stack">Flutter / Dart / Riverpod</p>
+              <div class="project-links"><a href="https://github.com/Natboa/Attend-Meditation-Aid/releases">Android downloads ↗</a><a href="https://github.com/Natboa/Attend-Meditation-Aid">Source ↗</a></div>
+            </div>
+          </div>
+          <details class="project-preview">
+            <summary><span>View the project</span><span class="expand" aria-hidden="true">+</span></summary>
+            <div class="preview-content">
+              <img class="wide-preview attend-preview" src="assets/attend.jpg" alt="Attend meditation app artwork, featuring a meditation timer, mindfulness bells, and 289 wisdom poems." width="1080" height="430" loading="lazy">
+              <div class="preview-caption"><p>A quiet companion for daily practice. No account needed.</p></div>
+            </div>
+          </details>
+        </article>
+        <a class="more-work text-link" href="https://github.com/Natboa?tab=repositories">More on GitHub <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">A little about me.</h2>
+        <div>
+          <p>I'm studying Software Engineering at Braude Academic College. I enjoy working across applications, data, and automation, learning the tools a problem calls for and seeing the work through.</p>
+          <ul class="skills" aria-label="Technologies I work with"><li>C# / .NET</li><li>Python</li><li>Flutter / Dart</li><li>C / Java</li><li>Git / Linux</li></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Natboa · Software engineering student</p>
+      <div class="appearance" hidden><label for="appearance">Appearance</label><select id="appearance"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
+      <p>Always curious. Still building.</p>
+    </footer>
+  </div>
 </body>
 </html>
