@@ -22,7 +22,7 @@
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch {}
   </script>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
   <script src="app.js?v=2" defer></script>
 </head>
 <body>
@@ -96,32 +96,30 @@
         </article>
 
         <article class="project" id="radio">
-          <div class="project-row">
-            <span class="project-number" aria-hidden="true">01</span>
-            <h3><a href="https://github.com/Natboa/RadioV2">RadioV2 <span aria-hidden="true">↗</span></a></h3>
-            <div class="project-description">
-              <p>Internet radio, from a Windows desktop to your phone.</p>
-              <p class="stack">C# / .NET / Flutter / Dart</p>
-              <div class="project-links"><a href="https://github.com/Natboa/RadioV2">Windows source ↗</a><a href="https://github.com/Natboa/RadioV2-Android">Android source ↗</a></div>
-            </div>
-          </div>
-          <div class="project-preview">
-
-            <div class="preview-content">
-              <div class="radio-gallery">
+          <div class="radio-layout">
+            <header class="radio-heading">
+              <span class="project-number" aria-hidden="true">01</span>
+              <div><h3>RadioV2</h3><p>Discover stations, save favourites, and keep listening on Windows and Android.</p></div>
+            </header>
+            <div class="radio-gallery">
               <figure class="radio-platform">
-                <figcaption class="platform-caption"><span>Android app</span><a href="https://github.com/Natboa/RadioV2-Android/releases" aria-label="Download RadioV2 for Android">Download ↗</a></figcaption>
                 <a class="radio-artwork" href="assets/radio.jpg" target="_blank" rel="noopener" aria-label="View the RadioV2 Android banner at full size">
-                  <img class="wide-preview" src="assets/radio.jpg" alt="Two RadioV2 Android screens, showing genre discovery and favourite stations, in black phone mockups on a purple background." width="1440" height="654" loading="lazy">
+                  <img src="assets/radio.jpg" alt="Two RadioV2 Android screens, showing genre discovery and favourite stations, in black phone mockups on a purple background." width="1440" height="654" loading="lazy">
                 </a>
+                <figcaption class="platform-caption">
+                  <div class="platform-name"><h4>Android</h4><p>Flutter / Dart</p></div>
+                  <div class="platform-actions"><a class="platform-download" href="https://github.com/Natboa/RadioV2-Android/releases" aria-label="Download RadioV2 for Android">Download <span aria-hidden="true">↗</span></a><a class="platform-source" href="https://github.com/Natboa/RadioV2-Android" aria-label="View RadioV2 Android source">Source <span aria-hidden="true">↗</span></a></div>
+                </figcaption>
               </figure>
-              <figure class="radio-platform radio-platform--desktop">
-                <figcaption class="platform-caption"><span>Windows app</span><a href="https://github.com/Natboa/RadioV2/releases" aria-label="Download RadioV2 for Windows">Download ↗</a></figcaption>
+              <figure class="radio-platform">
                 <a class="radio-artwork" href="assets/radio-windows-laptops.webp" target="_blank" rel="noopener" aria-label="View the RadioV2 Windows laptop banner at full size">
                   <img src="assets/radio-windows-laptops.webp" alt="RadioV2 for Windows displayed on three laptops against a purple background: genre discovery, country discovery, and favourites." width="1800" height="620" loading="lazy">
                 </a>
+                <figcaption class="platform-caption">
+                  <div class="platform-name"><h4>Windows</h4><p>C# / .NET / WPF</p></div>
+                  <div class="platform-actions"><a class="platform-download" href="https://github.com/Natboa/RadioV2/releases" aria-label="Download RadioV2 for Windows">Download <span aria-hidden="true">↗</span></a><a class="platform-source" href="https://github.com/Natboa/RadioV2" aria-label="View RadioV2 Windows source">Source <span aria-hidden="true">↗</span></a></div>
+                </figcaption>
               </figure>
-              </div>
             </div>
           </div>
         </article>
