@@ -207,6 +207,11 @@ footer p { margin: 0; }
   footer .appearance { margin-left: auto; }
   footer > p:last-child { flex-basis: 100%; }
 }
+@media (max-width: 359px) {
+  .hero-copy h1 { font-size: 36px; }
+  .platform-caption { padding: 12px; }
+  .platform-actions { gap: 10px; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
