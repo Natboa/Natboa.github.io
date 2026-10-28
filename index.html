@@ -22,7 +22,7 @@
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch {}
   </script>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
   <script src="app.js?v=2" defer></script>
 </head>
 <body>
@@ -44,7 +44,7 @@
           <span class="availability">Exploring junior software roles</span>
           <h1 id="intro-title">Curious mind.<span>Useful software.</span></h1>
           <p>I'm Natboa, a software engineering student turning interesting problems into things you can actually use.</p>
-          <a class="text-link hero-link" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
+          <a class="button button--primary hero-link" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-objects enter enter-later">
           <a class="terrain-print" href="#terrain" aria-label="Explore Shaded Relief Maps">
@@ -53,7 +53,10 @@
           <a class="phone-object" href="#radio" aria-label="Explore RadioV2">
             <img src="assets/phone.webp" alt="RadioV2 genre discovery inside an Android phone, including navigation buttons." width="500" height="958">
           </a>
-          <p class="object-caption">Apps, landscapes, and the things between.</p>
+          <a class="eink-object" href="#air-watch" aria-label="Explore the Air Watch e-ink dashboard">
+            <span class="eink-bezel"><img src="assets/air-watch-screen.png" alt="Air Watch's real rendered dashboard with current readings and a populated weekly graph, inside an ivory e-ink frame." width="800" height="480"></span>
+          </a>
+          <p class="object-caption">Apps, landscapes, and everyday life.</p>
         </div>
       </section>
 
@@ -96,113 +99,89 @@
         </article>
 
         <article class="project" id="radio">
-          <div class="radio-layout">
-            <header class="radio-heading">
+          <div class="radio-layout project-layout">
+            <header class="radio-heading project-heading">
               <span class="project-number" aria-hidden="true">01</span>
               <div><h3>RadioV2</h3><p>Discover stations, save favourites, and keep listening on Windows and Android.</p></div>
             </header>
             <div class="radio-gallery">
-              <figure class="radio-platform">
+              <figure class="radio-platform project-panel">
                 <a class="radio-artwork" href="assets/radio.jpg" target="_blank" rel="noopener" aria-label="View the RadioV2 Android banner at full size">
                   <img src="assets/radio.jpg" alt="Two RadioV2 Android screens, showing genre discovery and favourite stations, in black phone mockups on a purple background." width="1440" height="654" loading="lazy">
                 </a>
-                <figcaption class="platform-caption">
-                  <div class="platform-name"><h4>Android</h4><p>Flutter / Dart</p></div>
-                  <div class="platform-actions"><a class="platform-download" href="https://github.com/Natboa/RadioV2-Android/releases" aria-label="Download RadioV2 for Android">Download <span aria-hidden="true">↗</span></a><a class="platform-source" href="https://github.com/Natboa/RadioV2-Android" aria-label="View RadioV2 Android source">Source <span aria-hidden="true">↗</span></a></div>
+                <figcaption class="platform-caption panel-footer">
+                  <div class="platform-name panel-label"><h4>Android</h4><p>Flutter / Dart</p></div>
+                  <div class="platform-actions panel-actions"><a class="button button--primary" href="https://github.com/Natboa/RadioV2-Android/releases" aria-label="Download RadioV2 for Android">Download <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="https://github.com/Natboa/RadioV2-Android" aria-label="View RadioV2 Android source">Source <span aria-hidden="true">↗</span></a></div>
                 </figcaption>
               </figure>
-              <figure class="radio-platform">
+              <figure class="radio-platform project-panel">
                 <a class="radio-artwork" href="assets/radio-windows-laptops.webp" target="_blank" rel="noopener" aria-label="View the RadioV2 Windows laptop banner at full size">
                   <img src="assets/radio-windows-laptops.webp" alt="RadioV2 for Windows displayed on three laptops against a purple background: genre discovery, country discovery, and favourites." width="1800" height="620" loading="lazy">
                 </a>
-                <figcaption class="platform-caption">
-                  <div class="platform-name"><h4>Windows</h4><p>C# / .NET / WPF</p></div>
-                  <div class="platform-actions"><a class="platform-download" href="https://github.com/Natboa/RadioV2/releases" aria-label="Download RadioV2 for Windows">Download <span aria-hidden="true">↗</span></a><a class="platform-source" href="https://github.com/Natboa/RadioV2" aria-label="View RadioV2 Windows source">Source <span aria-hidden="true">↗</span></a></div>
+                <figcaption class="platform-caption panel-footer">
+                  <div class="platform-name panel-label"><h4>Windows</h4><p>C# / .NET / WPF</p></div>
+                  <div class="platform-actions panel-actions"><a class="button button--primary" href="https://github.com/Natboa/RadioV2/releases" aria-label="Download RadioV2 for Windows">Download <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="https://github.com/Natboa/RadioV2" aria-label="View RadioV2 Windows source">Source <span aria-hidden="true">↗</span></a></div>
                 </figcaption>
               </figure>
             </div>
           </div>
         </article>
 
-        <article class="project" id="terrain">
-          <div class="terrain-layout">
-          <div class="terrain-copy">
-            <span class="project-number" aria-hidden="true">02</span>
-            <h3><a href="https://mapyourtrip.vercel.app">Shaded Relief Maps <span aria-hidden="true">↗</span></a></h3>
-            <div class="project-description">
-              <p>Turn a place and a journey into a printable terrain poster.</p>
-              <p class="stack">Python / Blender / Geospatial data</p>
-              <div class="project-links"><a href="https://mapyourtrip.vercel.app">Try the poster maker ↗</a></div>
-            </div>
-          </div>
-          <div class="project-preview" id="terrain-preview">
-
-            <div class="preview-content">
-              <div class="terrain-preview-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/terrain-still.jpg"><img id="terrain-animation" src="assets/terrain-process.gif" alt="The actual Lake Titicaca map with trip pins becomes satellite imagery, then the finished three-dimensional terrain poster." width="960" height="792" loading="lazy"></picture></div>
-              <p class="asset-credit">Trip map: Google Maps. Contains modified Copernicus Sentinel data 2024. Routes: OpenStreetMap contributors (ODbL), via Valhalla. Terrain rendered in Blender.</p>
-            </div>
-          </div>
-          </div>
-        </article>
-
-        <article class="project" id="recorder">
-          <div class="project-row">
-            <span class="project-number" aria-hidden="true">03</span>
-            <h3><a href="https://github.com/Natboa/browser-video-recorder">Browser Video Recorder <span aria-hidden="true">↗</span></a></h3>
-            <div class="project-description">
-              <p>An agent skill that saves browser-only lessons for offline viewing.</p>
-              <p class="stack">Python / OBS Studio / Agent Skills</p>
-              <div class="project-links"><a href="https://github.com/Natboa/browser-video-recorder#install">Install the skill ↗</a><a href="https://github.com/Natboa/browser-video-recorder">Source ↗</a></div>
-            </div>
-          </div>
-          <div class="project-preview">
-
-            <div class="preview-content">
-              <img class="wide-preview recorder-preview" src="assets/video-recorder.jpg" alt="Browser Video Recorder artwork, showing a browser video being recorded with OBS and saved locally." width="1376" height="430" loading="lazy">
-              <div class="preview-caption"><p>A course link in. Local MP4 files out.</p><a href="https://github.com/Natboa/browser-video-recorder#readme">How it works ↗</a></div>
+        <article class="project" id="terrain" aria-labelledby="terrain-title">
+          <div class="project-layout">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">02</span>
+              <div><h3 id="terrain-title">Shaded Relief Maps</h3><p>Turn a place and a journey into a printable terrain poster.</p></div>
+            </header>
+            <div class="project-panel poster-panel" id="terrain-preview">
+              <div class="poster-body">
+                <div class="poster-details">
+                  <p class="poster-intro">A real place. Your route.<br> A print to keep.</p>
+                  <p class="poster-description">Travel maps become three-dimensional terrain, with the route and stops carried into the finished artwork.</p>
+                  <dl class="poster-facts"><div><dt>Built around</dt><dd>A place and a journey</dd></div><div><dt>Made for</dt><dd>Printing and framing</dd></div></dl>
+                </div>
+                <div class="poster-visual"><div class="terrain-preview-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/terrain-still.jpg"><img id="terrain-animation" src="assets/terrain-process.gif" alt="The actual Lake Titicaca map with trip pins becomes satellite imagery, then the finished three-dimensional terrain poster." width="960" height="792" loading="lazy"></picture></div><p class="asset-credit">Trip map: Google Maps. Contains modified Copernicus Sentinel data 2024. Routes: OpenStreetMap contributors (ODbL), via Valhalla. Terrain rendered in Blender.</p></div>
+              </div>
+              <div class="panel-footer">
+                <div class="panel-label"><h4>Poster maker</h4><p>Python / Blender / Geospatial data</p></div>
+                <div class="panel-actions"><a class="button button--primary" href="https://mapyourtrip.vercel.app">Open poster maker <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="assets/terrain.jpg" target="_blank" rel="noopener">View example <span aria-hidden="true">↗</span></a></div>
+              </div>
             </div>
           </div>
         </article>
 
-        <article class="project" id="attend">
-          <div class="project-row">
-            <span class="project-number" aria-hidden="true">04</span>
-            <h3><a href="https://github.com/Natboa/Attend-Meditation-Aid">Attend <span aria-hidden="true">↗</span></a></h3>
-            <div class="project-description">
-              <p>A meditation timer, mindfulness bells, and a little room to pause.</p>
-              <p class="stack">Flutter / Dart / Riverpod</p>
-              <div class="project-links"><a href="https://github.com/Natboa/Attend-Meditation-Aid/releases">Android downloads ↗</a><a href="https://github.com/Natboa/Attend-Meditation-Aid">Source ↗</a></div>
+        <article class="project" id="recorder" aria-labelledby="recorder-title">
+          <div class="project-layout">
+            <header class="project-heading"><span class="project-number" aria-hidden="true">03</span><div><h3 id="recorder-title">Browser Video Recorder</h3><p>An agent skill that saves browser-only lessons for offline viewing.</p></div></header>
+            <div class="project-panel showcase-panel">
+              <a class="panel-artwork recorder-artwork" href="assets/video-recorder.jpg" target="_blank" rel="noopener" aria-label="View the Browser Video Recorder image at full size"><img src="assets/video-recorder.jpg" alt="Browser Video Recorder artwork, showing a browser video recorded with OBS and saved locally." width="1376" height="430" loading="lazy"></a>
+              <p class="panel-caption">A course link in. Local MP4 files out.</p>
+              <div class="panel-footer"><div class="panel-label"><h4>Agent skill</h4><p>Python / OBS Studio / Agent Skills</p></div><div class="panel-actions"><a class="button button--primary" href="https://github.com/Natboa/browser-video-recorder#install">Install the skill <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="https://github.com/Natboa/browser-video-recorder">Source <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="https://github.com/Natboa/browser-video-recorder#readme">How it works <span aria-hidden="true">↗</span></a></div></div>
             </div>
           </div>
-          <div class="project-preview">
+        </article>
 
-            <div class="preview-content">
-              <img class="wide-preview attend-preview" src="assets/attend.jpg" alt="Attend meditation app artwork, featuring a meditation timer, mindfulness bells, and 289 wisdom poems." width="1080" height="430" loading="lazy">
-              <div class="preview-caption"><p>A quiet companion for daily practice. No account needed.</p></div>
+        <article class="project" id="attend" aria-labelledby="attend-title">
+          <div class="project-layout">
+            <header class="project-heading"><span class="project-number" aria-hidden="true">04</span><div><h3 id="attend-title">Attend</h3><p>A meditation timer, mindfulness bells, and a little room to pause.</p></div></header>
+            <div class="project-panel showcase-panel">
+              <a class="panel-artwork attend-artwork" href="assets/attend.jpg" target="_blank" rel="noopener" aria-label="View the Attend image at full size"><img src="assets/attend.jpg" alt="Attend meditation app artwork, featuring a timer, mindfulness bells, and wisdom poems." width="1080" height="430" loading="lazy"></a>
+              <p class="panel-caption">A quiet companion for daily practice. No account needed.</p>
+              <div class="panel-footer"><div class="panel-label"><h4>Android app</h4><p>Flutter / Dart / Riverpod</p></div><div class="panel-actions"><a class="button button--primary" href="https://github.com/Natboa/Attend-Meditation-Aid/releases">Download <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="https://github.com/Natboa/Attend-Meditation-Aid">Source <span aria-hidden="true">↗</span></a></div></div>
             </div>
           </div>
         </article>
-        <article class="project air-watch-project" id="air-watch" aria-labelledby="air-watch-title">
-          <div class="project-row">
-            <span class="project-number" aria-hidden="true">05</span>
-            <h3 id="air-watch-title">Air Watch</h3>
-            <div class="project-description">
-              <p>Local air quality, window advice, and weather on a quiet e-ink dashboard.</p>
-              <p class="stack">Bun / TypeScript / Monitoring data / E-ink</p>
-              <p class="air-watch-note">A personal display built around nearby monitoring stations and wind forecasts.</p>
-              <div class="project-links"><a href="https://github.com/Natboa/air-watch-public">View on GitHub ↗</a></div>
-            </div>
-          </div>
-          <div class="project-preview">
-            <div class="preview-content">
-              <a href="assets/air-watch-wall.png" target="_blank" rel="noopener" aria-label="View the Air Watch e-ink presentation at full size">
-                <img class="wide-preview air-watch-preview" src="assets/air-watch-wall.png" alt="A compact ivory e-ink Air Watch display mounted on a pale wall beside a window, showing current readings and a populated weekly pollution graph." width="1672" height="941" loading="lazy">
-              </a>
-              <div class="preview-caption"><p>Wall-mounted e-ink. Real station readings; room mockup.</p><a href="assets/air-watch-screen.png" target="_blank" rel="noopener">View screen ↗</a></div>
+        <article class="project" id="air-watch" aria-labelledby="air-watch-title">
+          <div class="project-layout">
+            <header class="project-heading"><span class="project-number" aria-hidden="true">05</span><div><h3 id="air-watch-title">Air Watch</h3><p>Local air quality, window advice, and weather on a quiet e-ink dashboard.</p></div></header>
+            <div class="project-panel showcase-panel">
+              <a class="panel-artwork air-watch-artwork" href="assets/air-watch-wall.png" target="_blank" rel="noopener" aria-label="View the Air Watch image at full size"><img src="assets/air-watch-wall.png" alt="A compact ivory Air Watch display mounted on a wall beside a window, showing real station readings and a populated weekly graph." width="1672" height="941" loading="lazy"></a>
+              <p class="panel-caption">Wall-mounted e-ink. Real station readings; room mockup.</p>
+              <div class="panel-footer"><div class="panel-label"><h4>E-ink dashboard</h4><p>Bun / TypeScript / Monitoring data</p></div><div class="panel-actions"><a class="button button--primary" href="https://github.com/Natboa/air-watch-public">View on GitHub <span aria-hidden="true">↗</span></a><a class="button button--secondary" href="assets/air-watch-screen.png">View screen <span aria-hidden="true">↗</span></a></div></div>
             </div>
           </div>
         </article>
-        <a class="more-work text-link" href="https://github.com/Natboa?tab=repositories">More on GitHub <span aria-hidden="true">↗</span></a>
+        <a class="more-work button button--secondary" href="https://github.com/Natboa?tab=repositories">More on GitHub <span aria-hidden="true">↗</span></a>
       </section>
 
       <section class="about" id="about" aria-labelledby="about-title">
