@@ -218,3 +218,8 @@ footer p { margin: 0; }
   .hero-objects:hover .terrain-print { transform: rotate(6deg); }
   .hero-objects:hover .phone-object { transform: rotate(-11deg); }
 }
+
+/* Air Watch: preserve the existing project grid and theme tokens. */
+.air-watch-note { margin-top: 10px !important; }
+.air-watch-project .preview-content { max-width: 820px; margin-inline: auto; }
+.air-watch-preview { width: 100%; }
