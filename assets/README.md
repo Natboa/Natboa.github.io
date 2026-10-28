@@ -7,6 +7,7 @@ Existing approved project artwork, reused from Natboa/Natboa's profile assets an
 - phone.webp: approved RadioV2 Android mockup with Android navigation buttons.
 - radio.jpg, radio-mobile.jpg: approved RadioV2 two-phone banner and mobile crop.
 - radio-desktop.jpg: existing Windows app screenshot.
+- radio-windows-laptops.webp: WebP export of the current Windows repository's Assets/screenshots/radio-banner.png (1800 x 620, source Git blob 7d08b3f814e4828a0dab077e8bd9bacb52a3bb1f). Three real app screens shown on laptop mockups. Composition preserved, no cropping or stretching. Source: https://github.com/Natboa/RadioV2/blob/main/Assets/screenshots/radio-banner.png . Replaces the plain desktop screenshot in the portfolio.
 - video-recorder.jpg: unchanged source artwork from Natboa/browser-video-recorder docs/banner.jpg.
 - attend.jpg: existing Attend project illustration.
 - social.jpg: resized JPEG export of the original terrain image for link previews.

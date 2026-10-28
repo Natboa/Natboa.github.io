@@ -22,7 +22,7 @@
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch {}
   </script>
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
   <script src="app.js?v=2" defer></script>
 </head>
 <body>
@@ -111,14 +111,15 @@
               <div class="radio-gallery">
               <figure class="radio-platform">
                 <figcaption class="platform-caption"><span>Android app</span><a href="https://github.com/Natboa/RadioV2-Android/releases" aria-label="Download RadioV2 for Android">Download ↗</a></figcaption>
-                <picture>
-                  <source media="(max-width: 600px)" srcset="assets/radio-mobile.jpg" width="840" height="681">
+                <a class="radio-artwork" href="assets/radio.jpg" target="_blank" rel="noopener" aria-label="View the RadioV2 Android banner at full size">
                   <img class="wide-preview" src="assets/radio.jpg" alt="Two RadioV2 Android screens, showing genre discovery and favourite stations, in black phone mockups on a purple background." width="1440" height="654" loading="lazy">
-                </picture>
+                </a>
               </figure>
               <figure class="radio-platform radio-platform--desktop">
                 <figcaption class="platform-caption"><span>Windows app</span><a href="https://github.com/Natboa/RadioV2/releases" aria-label="Download RadioV2 for Windows">Download ↗</a></figcaption>
-                <img class="desktop-preview" src="assets/radio-desktop.jpg" alt="RadioV2 for Windows, with genre discovery, station artwork, favourites, and playback controls." width="1080" height="718" loading="lazy">
+                <a class="radio-artwork" href="assets/radio-windows-laptops.webp" target="_blank" rel="noopener" aria-label="View the RadioV2 Windows laptop banner at full size">
+                  <img src="assets/radio-windows-laptops.webp" alt="RadioV2 for Windows displayed on three laptops against a purple background: genre discovery, country discovery, and favourites." width="1800" height="620" loading="lazy">
+                </a>
               </figure>
               </div>
             </div>
@@ -126,7 +127,8 @@
         </article>
 
         <article class="project" id="terrain">
-          <div class="project-row">
+          <div class="terrain-layout">
+          <div class="terrain-copy">
             <span class="project-number" aria-hidden="true">02</span>
             <h3><a href="https://mapyourtrip.vercel.app">Shaded Relief Maps <span aria-hidden="true">↗</span></a></h3>
             <div class="project-description">
@@ -139,11 +141,9 @@
 
             <div class="preview-content">
               <div class="terrain-preview-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/terrain-still.jpg"><img id="terrain-animation" src="assets/terrain-process.gif" alt="The actual Lake Titicaca map with trip pins becomes satellite imagery, then the finished three-dimensional terrain poster." width="960" height="792" loading="lazy"></picture></div>
-              <div class="preview-caption">
-                <p>Places you’ve been. Art you can keep.</p>
-              </div>
               <p class="asset-credit">Trip map: Google Maps. Contains modified Copernicus Sentinel data 2024. Routes: OpenStreetMap contributors (ODbL), via Valhalla. Terrain rendered in Blender.</p>
             </div>
+          </div>
           </div>
         </article>
 
