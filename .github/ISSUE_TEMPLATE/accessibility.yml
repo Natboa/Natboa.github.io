@@ -1,0 +1,28 @@
+name: Accessibility / נגישות
+description: Report an accessibility barrier or request an accessible alternative, in Hebrew or English.
+title: "[Accessibility]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This report is public and requires a GitHub account. Please do not include passwords, medical information, or other private details.
+        אפשר לפנות בעברית או באנגלית. הפנייה גלויה לציבור; אין לצרף סיסמאות, מידע רפואי או פרטים אישיים אחרים.
+  - type: input
+    id: page
+    attributes:
+      label: Page URL / כתובת העמוד
+      description: Which page or project were you viewing?
+    validations:
+      required: true
+  - type: textarea
+    id: barrier
+    attributes:
+      label: Barrier or accommodation request / הקושי או בקשת ההתאמה
+      description: What did you try to do, what happened, and what would help you continue?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Browser or assistive technology (optional) / דפדפן או טכנולוגיה מסייעת (רשות)
+      description: Include only details you are comfortable sharing publicly.

@@ -44,7 +44,7 @@ img { display: block; width: 100%; height: auto; }
 a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
 ::selection { background: var(--accent); color: var(--bg); }
 .shell { max-width: 1424px; margin: auto; padding: 0 60px; }
-.skip-link { position: fixed; top: 12px; left: 12px; z-index: 10; background: var(--ink); color: var(--bg); padding: 10px 20px; transform: translateY(-160%); }
+.skip-link { position: fixed; top: 12px; inset-inline-start: 12px; z-index: 10; background: var(--ink); color: var(--bg); padding: 10px 20px; transform: translateY(-160%); }
 .skip-link:focus { transform: none; }
 .site-nav { min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
 .wordmark { font-size: 28px; font-weight: 800; letter-spacing: -.065em; text-decoration: none; }
@@ -365,4 +365,36 @@ footer p { margin: 0; }
   .button { padding-inline: 12px; font-size: 11px; }
   .platform-actions .button { padding-inline: 12px; font-size: 11px; }
   .poster-body { padding: 16px; }
+}
+
+/* Keyboard focus stays visible above the overlapping project objects. */
+.hero-objects a:focus-visible { z-index: 6; }
+.hero-objects .object-caption { z-index: 4; background: var(--bg); }
+main:focus { outline: none; }
+.animation-controls { display: flex; justify-content: center; margin-top: 14px; }
+.animation-controls p { margin: 0; color: var(--muted); font-size: 12px; }
+footer { flex-wrap: wrap; }
+.accessibility-link { display: inline-flex; align-items: center; gap: .3em; min-height: 44px; font-size: 12px; }
+
+/* The statement shares the portfolio's type, palette and appearance control. */
+.accessibility-page { max-width: 76ch; padding-block: 56px 72px; margin-inline: auto; }
+.accessibility-page h1 { font-size: clamp(36px, 5vw, 60px); letter-spacing: -.04em; line-height: 1.2; margin: 0 0 24px; }
+.accessibility-page .statement-intro { color: var(--muted); font-size: 18px; line-height: 1.8; }
+.statement-languages { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-block: 24px 36px; }
+.statement-languages a { display: inline-flex; align-items: center; min-height: 44px; }
+.statement-section { scroll-margin-top: 28px; }
+.statement-section + .statement-section { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 40px; }
+.statement-section h2 { margin-bottom: 20px; }
+.statement-section h3 { font-size: 20px; letter-spacing: -.025em; margin-block: 32px 12px; }
+.statement-section p, .statement-section li { line-height: 1.85; }
+.statement-section ul { padding-inline-start: 24px; }
+.statement-section li + li { margin-top: 10px; }
+.statement-section :is(p, li) { overflow-wrap: anywhere; }
+.statement-section[dir="rtl"] { font-family: Arial, sans-serif; }
+.statement-section[dir="rtl"] :is(h2, h3) { letter-spacing: normal; }
+.statement-date { color: var(--muted); font-size: 14px; }
+@media (max-width: 767px) {
+  .accessibility-page { padding-block: 36px 48px; }
+  .accessibility-page .statement-intro { font-size: 16px; }
+  .statement-nav nav { flex-wrap: wrap; justify-content: flex-end; }
 }

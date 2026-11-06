@@ -22,8 +22,8 @@
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch {}
   </script>
-  <link rel="stylesheet" href="styles.css?v=9">
-  <script src="app.js?v=2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=10">
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,7 +38,7 @@
       </nav>
     </header>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <section class="hero" id="top" aria-labelledby="intro-title">
         <div class="hero-copy enter">
           <span class="availability">Exploring junior software roles</span>
@@ -140,7 +140,14 @@
                   <p class="poster-description">Travel maps become three-dimensional terrain, with the route and stops carried into the finished artwork.</p>
                   <dl class="poster-facts"><div><dt>Built around</dt><dd>A place and a journey</dd></div><div><dt>Made for</dt><dd>Printing and framing</dd></div></dl>
                 </div>
-                <div class="poster-visual"><div class="terrain-preview-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/terrain-still.jpg"><img id="terrain-animation" src="assets/terrain-process.gif" alt="The actual Lake Titicaca map with trip pins becomes satellite imagery, then the finished three-dimensional terrain poster." width="960" height="792" loading="lazy"></picture></div><p class="asset-credit">Trip map: Google Maps. Contains modified Copernicus Sentinel data 2024. Routes: OpenStreetMap contributors (ODbL), via Valhalla. Terrain rendered in Blender.</p></div>
+                <div class="poster-visual">
+                  <div class="terrain-preview-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/terrain-still.jpg"><img id="terrain-animation" src="assets/terrain-still.jpg" data-animation-src="assets/terrain-process.gif" alt="Lake Titicaca and a travel route transformed into a three-dimensional terrain poster." width="960" height="792" loading="lazy"></picture></div>
+                  <div class="animation-controls" hidden>
+                    <button class="button button--secondary" type="button" id="animation-toggle" aria-controls="terrain-animation">Stop animation</button>
+                    <p id="animation-motion-note" hidden>Animation is off because your system requests reduced motion.</p>
+                  </div>
+                  <p class="asset-credit">Trip map: Google Maps. Contains modified Copernicus Sentinel data 2024. Routes: OpenStreetMap contributors (ODbL), via Valhalla. Terrain rendered in Blender.</p>
+                </div>
               </div>
               <div class="panel-footer">
                 <div class="panel-label"><h4>Poster maker</h4><p>Python / Blender / Geospatial data</p></div>
@@ -195,6 +202,7 @@
 
     <footer>
       <p>Natboa · Software engineering student</p>
+      <a class="accessibility-link" href="accessibility.html">Accessibility / <span lang="he" dir="rtl">נגישות</span></a>
       <div class="appearance" hidden><label for="appearance">Appearance</label><select id="appearance"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
       <p>Always curious. Still building.</p>
     </footer>

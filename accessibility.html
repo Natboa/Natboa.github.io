@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Accessibility features, checks, known limitations, and reporting a barrier on Natboa's portfolio. מידע נגישות בעברית ובאנגלית.">
+  <meta name="theme-color" content="#f3f5f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151c1d" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://natboa.dev/accessibility.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <title>Accessibility / נגישות | Natboa</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('natboa-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="styles.css?v=10">
+  <script src="app.js?v=3" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
+    <header class="site-nav statement-nav">
+      <a class="wordmark" href="./" aria-label="Natboa, home">natboa.</a>
+      <nav aria-label="Main navigation">
+        <a href="./#work">Work</a>
+        <a href="./#about">About</a>
+        <a href="https://github.com/Natboa" class="external">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main" class="accessibility-page" tabindex="-1">
+      <h1>Accessibility</h1>
+      <p class="statement-intro">Accessibility features, checks, known limitations, and ways to report a barrier on Natboa's portfolio.</p>
+      <nav class="statement-languages" aria-label="Statement language">
+        <a href="#en" lang="en">Read in English</a>
+        <a href="#he" lang="he" dir="rtl">לקריאה בעברית</a>
+      </nav>
+
+      <section id="en" class="statement-section" lang="en" aria-labelledby="en-title">
+        <h2 id="en-title">Using this website</h2>
+        <p>This is Natboa's personal software portfolio. Accessibility work on the site is guided by WCAG and Israeli Standard IS 5568. The information below describes the work done and the testing still needed.</p>
+        <h3>Accessibility features</h3>
+        <ul>
+          <li>Navigate links and controls with Tab and Shift+Tab. A “Skip to content” link moves keyboard focus directly to the main content.</li>
+          <li>Keyboard focus is visible, including on the overlapping project images. Headings and page landmarks describe the structure.</li>
+          <li>Project images have text descriptions. Decorative icons are hidden from screen readers.</li>
+          <li>Use your browser's zoom controls to enlarge the page. The layout adapts to narrow screens.</li>
+          <li>Choose System, Light, or Dark using the Appearance control in the footer. The default follows your device setting.</li>
+          <li>The map preview has a “Stop animation” control. Stopping shows a still image and saves your choice on this device. “Play animation” restarts the sequence.</li>
+          <li>Your device's reduced-motion setting disables the preview animation and interface movement. A still preview is also shown when JavaScript is unavailable.</li>
+        </ul>
+        <h3>Checks and known limitations</h3>
+        <p class="statement-date">Last technical check: <time datetime="2026-11-06">6 November 2026</time>.</p>
+        <p>Checks included automated accessibility scans, keyboard navigation, light and dark themes, and desktop and mobile browser layouts. Automated checks cannot establish full accessibility or legal compliance.</p>
+        <ul>
+          <li>A complete manual assessment with NVDA, VoiceOver, and TalkBack has not been performed. This page is not a certified accessibility assessment.</li>
+          <li>Project screenshots contain text within images. Their descriptions explain the image's purpose, rather than transcribing every application screen.</li>
+          <li>Linked project sites, downloads, and GitHub pages are separate services and have not been fully assessed as part of this portfolio check.</li>
+          <li>Accessibility reports currently use GitHub. A GitHub account is required.</li>
+        </ul>
+        <h3>Report an accessibility barrier</h3>
+        <p>Contact the site owner, Natboa, by <a href="https://github.com/Natboa/Natboa.github.io/issues/new?template=accessibility.yml">opening an accessibility report on GitHub</a>. You can report in Hebrew or English, describe a barrier, or request an accessible alternative.</p>
+        <p>Include the affected page, the action you tried, and what prevented you from continuing. Browser and assistive-technology details are helpful if you wish to share them. Reports are public, so please do not include passwords, medical information, or other private details.</p>
+      </section>
+
+      <section id="he" class="statement-section" lang="he" dir="rtl" aria-labelledby="he-title">
+        <h2 id="he-title">מידע והצהרת נגישות</h2>
+        <p>זהו אתר תיק העבודות האישי של Natboa. עבודת הנגישות באתר נעשית בהנחיית WCAG ות״י 5568. המידע בעמוד מתאר את ההתאמות שבוצעו ואת הבדיקות שעדיין נדרשות.</p>
+        <h3>התאמות הנגישות באתר</h3>
+        <ul>
+          <li>אפשר לעבור בין קישורים ופקדים באמצעות Tab ו־Shift+Tab. הקישור “Skip to content” מעביר את מיקוד המקלדת ישירות לתוכן הראשי.</li>
+          <li>מיקוד המקלדת מסומן באופן ברור, גם בתמונות הפרויקטים החופפות. כותרות ואזורי עמוד סמנטיים מתארים את מבנה האתר.</li>
+          <li>לתמונות הפרויקטים יש תיאור טקסטואלי. סמלים דקורטיביים מוסתרים מקוראי מסך.</li>
+          <li>אפשר להגדיל את העמוד באמצעות בקרת הזום של הדפדפן. הפריסה מותאמת גם למסכים צרים.</li>
+          <li>בקרת Appearance בתחתית העמוד מאפשרת לבחור תצוגה בהירה, כהה או לפי הגדרת המכשיר. ברירת המחדל היא הגדרת המכשיר.</li>
+          <li>לצד תצוגת המפה מופיע כפתור “Stop animation”. העצירה מציגה תמונה קבועה ושומרת את הבחירה במכשיר. הכפתור “Play animation” מפעיל מחדש את הרצף.</li>
+          <li>הגדרת הפחתת תנועה במכשיר מכבה את האנימציה ואת תנועות הממשק. תמונה קבועה מוצגת גם כאשר JavaScript אינו זמין.</li>
+        </ul>
+        <h3>בדיקות ומגבלות ידועות</h3>
+        <p class="statement-date">בדיקה טכנית אחרונה: <time datetime="2026-11-06">6 בנובמבר 2026</time>.</p>
+        <p>נבדקו סריקות נגישות אוטומטיות, ניווט מקלדת, תצוגה בהירה וכהה ופריסות דפדפן במחשב ובגדלים של מסך נייד. בדיקה אוטומטית אינה קובעת נגישות מלאה או עמידה בדרישות הדין.</p>
+        <ul>
+          <li>טרם בוצעה בדיקה ידנית מלאה עם NVDA, VoiceOver ו־TalkBack. עמוד זה אינו חוות דעת של מורשה נגישות.</li>
+          <li>צילומי מסך של הפרויקטים כוללים טקסט בתוך תמונות. התיאורים מסבירים את מטרת התמונה ואינם תמלול מלא של כל מסך יישום.</li>
+          <li>אתרי הפרויקטים המקושרים, קובצי ההורדה ועמודי GitHub הם שירותים נפרדים ולא נבדקו במלואם במסגרת בדיקת תיק העבודות.</li>
+          <li>ערוץ הדיווח הנוכחי הוא GitHub, והשימוש בו דורש חשבון GitHub.</li>
+        </ul>
+        <h3>דיווח על קושי או בקשת התאמה</h3>
+        <p>אפשר לפנות לבעל האתר, Natboa, באמצעות <a href="https://github.com/Natboa/Natboa.github.io/issues/new?template=accessibility.yml">פתיחת פנייה בנושא נגישות ב־GitHub</a>. ניתן לפנות בעברית או באנגלית, לתאר קושי או לבקש חלופה נגישה.</p>
+        <p>מומלץ לציין את כתובת העמוד, את הפעולה שניסיתם לבצע ואת הקושי שנתקלתם בו. אפשר להוסיף פרטי דפדפן וטכנולוגיה מסייעת לפי בחירתכם. הפניות גלויות לציבור, ולכן אין לצרף סיסמאות, מידע רפואי או פרטים אישיים אחרים.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Natboa · Software engineering student</p>
+      <a class="accessibility-link" href="./">Back to portfolio</a>
+      <div class="appearance" hidden><label for="appearance">Appearance</label><select id="appearance"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
+      <p>Always curious. Still building.</p>
+    </footer>
+  </div>
+</body>
+</html>
