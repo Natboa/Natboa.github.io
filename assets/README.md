@@ -9,6 +9,7 @@ Existing approved project artwork, reused from Natboa/Natboa's profile assets an
 - radio-desktop.jpg: existing Windows app screenshot.
 - radio-windows-laptops.webp: WebP export of the current Windows repository's Assets/screenshots/radio-banner.png (1800 x 620, source Git blob 7d08b3f814e4828a0dab077e8bd9bacb52a3bb1f). Three real app screens shown on laptop mockups. Composition preserved, no cropping or stretching. Source: https://github.com/Natboa/RadioV2/blob/main/Assets/screenshots/radio-banner.png . Replaces the plain desktop screenshot in the portfolio.
 - video-recorder.jpg: unchanged source artwork from Natboa/browser-video-recorder docs/banner.jpg.
+- air-watch-device.webp: hero e-ink device (1150 x 875, transparent). Blender render of a simple ivory device model with the real air-watch-screen.png as its screen texture; the source pixels were only smoothed and tinted to paper and ink, not redrawn. The tilt and shadow are baked in.
 - attend.jpg: existing Attend project illustration.
 - social.jpg: resized JPEG export of the original terrain image for link previews.
 - manrope.woff2: self-hosted Manrope variable Latin font from Google Fonts, under the included SIL Open Font License.
