@@ -1,20 +1,23 @@
 // Appearance is progressive enhancement: CSS follows the system without JS.
+// The home page uses the control in its floating bar (glass.js); other pages use this select.
 const appearance = document.querySelector('#appearance');
-const validThemes = ['system', 'light', 'dark'];
-try {
-  const saved = localStorage.getItem('natboa-theme');
-  if (validThemes.includes(saved)) appearance.value = saved;
-} catch { /* Storage may be unavailable in private or restricted contexts. */ }
-document.querySelector('.appearance').hidden = false;
-appearance.addEventListener('change', () => {
-  const mode = appearance.value;
-  if (mode === 'system') delete document.documentElement.dataset.theme;
-  else document.documentElement.dataset.theme = mode;
+if (appearance) {
+  const validThemes = ['system', 'light', 'dark'];
   try {
-    if (mode === 'system') localStorage.removeItem('natboa-theme');
-    else localStorage.setItem('natboa-theme', mode);
-  } catch {}
-});
+    const saved = localStorage.getItem('natboa-theme');
+    if (validThemes.includes(saved)) appearance.value = saved;
+  } catch { /* Storage may be unavailable in private or restricted contexts. */ }
+  document.querySelector('.appearance').hidden = false;
+  appearance.addEventListener('change', () => {
+    const mode = appearance.value;
+    if (mode === 'system') delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = mode;
+    try {
+      if (mode === 'system') localStorage.removeItem('natboa-theme');
+      else localStorage.setItem('natboa-theme', mode);
+    } catch {}
+  });
+}
 
 // Keep a static preview until its stop control is ready. Without JavaScript,
 // the HTML image stays still. A system request for reduced motion always wins.

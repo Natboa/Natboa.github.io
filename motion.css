@@ -1,0 +1,64 @@
+/* Motion layer, loaded after glass.css. Entrances use the individual translate/scale
+   properties so they compose with each element's own transform and hover states.
+   styles.css already removes all animation under prefers-reduced-motion. */
+:root { --ease-in-out: cubic-bezier(.77, 0, .175, 1); }
+
+/* Page load, the one orchestrated moment: the glass bar drops in, then the headline
+   assembles word by word, then the objects land on the desk. */
+.hero-copy.enter, .hero-objects.enter { animation: none; }
+.glass-bar > * { animation: bar-in 900ms var(--ease-out) backwards; }
+.glass-bar > :nth-child(2) { animation-delay: 90ms; }
+@keyframes bar-in { from { opacity: 0; translate: 0 -28px; scale: .92; } }
+
+/* styles.css colours every span in the h1; the first line's words keep the ink colour. */
+#intro-title > .rise { color: inherit; white-space: normal; }
+.rise { display: inline-block; animation: rise 900ms var(--ease-out) backwards; animation-delay: calc(160ms + var(--d, 0) * 55ms); }
+.hero-copy .availability, .hero-copy > p, .hero-copy .hero-link { animation: rise 900ms var(--ease-out) backwards; }
+.hero-copy .availability { animation-delay: 120ms; }
+.hero-copy > p { animation-delay: 520ms; }
+.hero-copy .hero-link { animation-delay: 620ms; }
+@keyframes rise { from { opacity: 0; translate: 0 .5em; filter: blur(10px); } }
+
+/* Objects land with their own spring, then keep a slow float so the desk feels alive. */
+.hero-objects { perspective: 1400px; transform-style: preserve-3d; }
+.hero-objects .terrain-print { animation: land 1100ms var(--ease-spring) 300ms backwards, float 7s ease-in-out 1.4s infinite alternate; }
+.hero-objects .phone-object { animation: land 1100ms var(--ease-spring) 420ms backwards, float 6s ease-in-out 1.6s infinite alternate-reverse; }
+.hero-objects .eink-object { animation: land 1100ms var(--ease-spring) 540ms backwards, float 8s ease-in-out 1.8s infinite alternate; }
+.hero-objects .object-caption { animation: rise 900ms var(--ease-out) 900ms backwards; }
+@keyframes land { from { opacity: 0; translate: 0 90px; scale: .86; } }
+@keyframes float { from { translate: 0 0; } to { translate: 0 -10px; } }
+
+/* A light sweep crosses the main call to action every few seconds: liquid catching light. */
+.hero-link::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / .5) 50%, transparent 70%);
+  translate: -120% 0; animation: sheen 5.5s var(--ease-in-out) 1.6s infinite;
+}
+@keyframes sheen { 0% { translate: -120% 0; } 22%, 100% { translate: 120% 0; } }
+
+/* Magnetic buttons: JS sets translate, and this spring carries it home. */
+.magnetic { transition: translate 450ms var(--ease-spring), transform 380ms var(--ease-spring), filter 160ms ease, background-color 160ms ease; }
+
+/* Scroll-driven reveals run off the main thread. They move and scale but never fade, so text
+   keeps full contrast at every point of the scroll. Browsers without scroll timelines show everything. */
+@supports (animation-timeline: view()) {
+  .section-head, .project-heading, .project-panel, .greg-copy > :not(.greg-integrations), .greg-integrations, .greg-capabilities li, .about > *, .more-work {
+    animation: reveal var(--ease-out) both; animation-timeline: view(); animation-range: entry 0% entry 70%;
+  }
+  .greg-integrations li { animation: pop var(--ease-out) both; animation-timeline: view(); animation-range: entry calc(20% + var(--i, 0) * 5%) entry calc(70% + var(--i, 0) * 5%); }
+}
+@keyframes reveal { from { translate: 0 56px; scale: .96; } }
+@keyframes pop { from { scale: .6; translate: 0 14px; } }
+
+/* Hover: integration icons hop. */
+.greg-integrations li > :first-child { transition: translate 420ms var(--ease-spring), scale 420ms var(--ease-spring); }
+@media (hover: hover) and (pointer: fine) {
+  .greg-integrations li:hover > :first-child { translate: 0 -5px; scale: 1.15; }
+}
+
+/* Theme change: the new appearance spreads out from the button you pressed. */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-link::before { display: none; }
+}

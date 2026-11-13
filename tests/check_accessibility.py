@@ -10,6 +10,19 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 
+def set_theme(page, theme):
+    """The statement page has a select; the home page has the control in its floating bar."""
+    if page.locator("#appearance").count():
+        page.select_option("#appearance", theme)
+        return
+    button = page.locator(f'.theme-control [data-mode="{theme}"]')
+    button.focus()  # Focus opens the control when it is collapsed.
+    page.wait_for_function("document.querySelector('.theme-control').dataset.collapsed === 'false'")
+    page.wait_for_timeout(600)
+    button.click()
+    page.wait_for_function(f"(document.documentElement.dataset.theme || 'system') === '{theme}'")
+
+
 def check_behaviour(browser, base):
     context = browser.new_context(viewport={"width": 1280, "height": 900}, reduced_motion="no-preference")
     page = context.new_page()
@@ -24,16 +37,16 @@ def check_behaviour(browser, base):
     page.locator("#terrain-animation").scroll_into_view_if_needed()
     stop = page.get_by_role("button", name="Stop animation", exact=True)
     assert stop.count() == 1 and stop.is_visible(), "A running preview needs an operable stop control"
-    assert page.locator("#terrain-animation").evaluate("e => e.currentSrc.endsWith('terrain-process.gif')")
+    page.wait_for_function("document.querySelector('#terrain-animation').currentSrc.endsWith('terrain-process.gif')", timeout=5000)
     stop.focus()
     page.keyboard.press("Enter")
-    assert page.locator("#terrain-animation").evaluate("e => e.currentSrc.endsWith('terrain-still.jpg')")
+    page.wait_for_function("document.querySelector('#terrain-animation').currentSrc.endsWith('terrain-still.jpg')", timeout=5000)
     page.reload(wait_until="networkidle")
-    assert page.locator("#terrain-animation").evaluate("e => e.currentSrc.endsWith('terrain-still.jpg')"), "Stop choice must survive reload"
+    page.wait_for_function("document.querySelector('#terrain-animation').currentSrc.endsWith('terrain-still.jpg')", timeout=5000)
     play = page.get_by_role("button", name="Play animation", exact=True)
     play.focus()
     page.keyboard.press("Space")
-    assert page.locator("#terrain-animation").evaluate("e => e.currentSrc.endsWith('terrain-process.gif')")
+    page.wait_for_function("document.querySelector('#terrain-animation').currentSrc.endsWith('terrain-process.gif')", timeout=5000)
     page.emulate_media(reduced_motion="reduce")
     page.wait_for_function("document.querySelector('#terrain-animation').currentSrc.endsWith('terrain-still.jpg')")
     assert not page.get_by_role("button", name="Stop animation", exact=True).is_visible()
@@ -76,9 +89,11 @@ def audit_pages(browser, base, axe_script, artifact_dir):
             page.set_viewport_size({"width": width, "height": 960})
             response = page.goto(base + route, wait_until="networkidle")
             assert response.status == 200
-            page.select_option("#appearance", theme)
+            set_theme(page, theme)
             page.evaluate("document.fonts.ready")
-            page.wait_for_function("document.getAnimations().every(a => a.playState !== 'running')")
+            # Wait for one-off entrances; looping and scroll-driven animations never finish.
+            page.wait_for_function("""document.getAnimations().every(a => a.playState !== 'running'
+                || a.effect.getTiming().iterations === Infinity || !(a.timeline instanceof DocumentTimeline))""")
             page.add_script_tag(path=str(axe_script))
             audit = page.evaluate("""async () => {
                 const r = await axe.run(document, {runOnly: {type:'tag', values:['wcag2a','wcag2aa','wcag21aa','wcag22aa','best-practice']}});

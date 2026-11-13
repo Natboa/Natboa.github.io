@@ -1,0 +1,168 @@
+/* Floating-bar layer, loaded after the site's own styles.css. It keeps the Liquid Glass
+   structure (a floating capsule bar, a morphing appearance control, rounded cards, a tinted
+   primary button) with the translucent material switched off: every surface is solid. */
+:root {
+  --control-radius: 999px;
+  --glass-fill: #fbfcfb;
+  --glass-lens: #e6ece9;
+  --glass-rim: rgb(255 255 255 / .9);
+  --glass-rim-soft: rgb(29 37 42 / .09);
+  --glass-shade: rgb(29 37 42 / .07);
+  --glass-shadow: 0 1px 2px rgb(23 54 38 / .06), 0 14px 34px -10px rgb(23 54 38 / .2);
+  --glass-spec: rgb(255 255 255 / .55);
+  --glass-tint: #b03422;
+  --glass-on-tint: #fff;
+  --ease-spring: cubic-bezier(.34, 1.36, .64, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --glass-fill: #1d2826; --glass-lens: #2c3c37;
+    --glass-rim: rgb(255 255 255 / .1); --glass-rim-soft: rgb(255 255 255 / .08); --glass-shade: rgb(0 0 0 / .28);
+    --glass-shadow: 0 1px 2px rgb(0 0 0 / .3), 0 18px 40px -12px rgb(0 0 0 / .6);
+    --glass-spec: rgb(255 255 255 / .12); --glass-tint: #ff8066; --glass-on-tint: #1b1210;
+  }
+}
+:root[data-theme="dark"] {
+  --glass-fill: #1d2826; --glass-lens: #2c3c37;
+  --glass-rim: rgb(255 255 255 / .1); --glass-rim-soft: rgb(255 255 255 / .08); --glass-shade: rgb(0 0 0 / .28);
+  --glass-shadow: 0 1px 2px rgb(0 0 0 / .3), 0 18px 40px -12px rgb(0 0 0 / .6);
+  --glass-spec: rgb(255 255 255 / .12); --glass-tint: #ff8066; --glass-on-tint: #1b1210;
+}
+
+.shell { padding-top: 92px; }
+
+/* Surface: solid fill, a bright top rim, a hairline edge and a soft lift. */
+.glass {
+  background: var(--glass-fill);
+  border-color: transparent;
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-rim),
+    inset 0 0 0 1px var(--glass-rim-soft),
+    var(--glass-shadow);
+}
+/* Pressable surfaces: a highlight that follows the pointer, and a springy press. */
+.glass--interactive { position: relative; overflow: hidden; isolation: isolate; transition: transform 380ms var(--ease-spring), background-color 160ms ease, filter 160ms ease; }
+.glass--interactive::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(110px circle at var(--mx, 50%) var(--my, -30%), var(--glass-spec), transparent 70%);
+  opacity: 0; transition: opacity 220ms ease;
+}
+.glass--interactive:active { transform: scale(.96); }
+@media (hover: hover) and (pointer: fine) {
+  .glass--interactive:hover::after { opacity: 1; }
+  .button.glass:hover { background: var(--glass-lens); border-color: transparent; color: var(--ink); }
+  .button.glass--prominent:hover { background: var(--glass-tint); color: var(--glass-on-tint); filter: brightness(1.07); }
+}
+.glass--prominent { background: var(--glass-tint); color: var(--glass-on-tint); }
+
+/* Content fades out as it passes under the floating bar. */
+.edge-effect {
+  position: fixed; inset: 0 0 auto; z-index: 15; pointer-events: none;
+  height: calc(env(safe-area-inset-top, 0px) + 84px);
+  background: linear-gradient(to bottom, var(--bg) 30%, transparent);
+  opacity: 0; transition: opacity 240ms ease;
+}
+.is-scrolled .edge-effect { opacity: 1; }
+
+/* The bar: navigation capsule plus a fixed-size slot for the appearance control.
+   The control opens out of its slot without taking layout space, so the bar never shifts. */
+.glass-bar {
+  position: fixed; z-index: 20; left: 0; right: 0;
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  display: flex; justify-content: center; align-items: center; gap: 10px;
+  padding-inline: 16px; pointer-events: none;
+}
+.glass-bar > * { pointer-events: auto; }
+.nav-capsule { display: flex; align-items: center; gap: 18px; height: 52px; padding: 0 6px 0 22px; border-radius: 999px; }
+.nav-capsule .wordmark { font-size: 22px; }
+.nav-links { position: relative; display: flex; align-items: center; height: 40px; }
+.nav-links a { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 15px; border-radius: 999px; font-size: 13px; font-weight: 650; text-decoration: none; }
+.nav-links a:focus-visible { outline-offset: 2px; }
+/* One indicator that slides and stretches between links instead of each link lighting up on its own. */
+.nav-indicator {
+  position: absolute; top: 0; left: 0; width: 0; height: 40px; border-radius: 999px;
+  background: var(--glass-lens);
+  box-shadow: inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-rim-soft);
+  opacity: 0;
+  transition: transform 520ms var(--ease-spring), width 520ms var(--ease-spring), opacity 220ms ease;
+}
+
+.theme-slot {
+  --seg: 40px; --pad: 6px;
+  position: relative; flex: none;
+  width: calc(var(--seg) + 2 * var(--pad)); height: calc(40px + 2 * var(--pad));
+}
+.theme-control {
+  --n: 3; --i: 0;
+  position: absolute; top: 0; left: 0; z-index: 1;
+  height: calc(40px + 2 * var(--pad)); width: calc(var(--seg) * var(--n) + 2 * var(--pad));
+  padding: var(--pad); border-radius: 999px;
+  transition: width 520ms var(--ease-spring), transform 380ms var(--ease-spring);
+}
+.theme-control[data-collapsed="true"] { --n: 1; }
+.theme-track { position: relative; display: flex; height: 40px; transition: transform 520ms var(--ease-spring); }
+.theme-control[data-collapsed="true"] .theme-track { transform: translateX(calc(var(--i) * var(--seg) * -1)); }
+.theme-thumb {
+  position: absolute; top: 0; left: 0; width: var(--seg); height: 40px; border-radius: 999px;
+  background: var(--glass-lens);
+  box-shadow: inset 0 1px 0 var(--glass-rim), inset 0 0 0 1px var(--glass-rim-soft);
+  transform: translateX(calc(var(--i) * var(--seg)));
+  transition: transform 520ms var(--ease-spring);
+}
+.theme-track button {
+  position: relative; z-index: 1; display: grid; place-items: center; flex: none;
+  width: var(--seg); height: 40px; padding: 0; border: 0; border-radius: 999px; background: none;
+  color: var(--muted); transition: opacity 260ms ease, color 160ms ease;
+}
+.theme-track button[aria-pressed="true"] { color: var(--ink); }
+.theme-track button:focus-visible { outline-offset: -3px; }
+.theme-control[data-collapsed="true"] .theme-track button[aria-pressed="false"] { opacity: 0; }
+.theme-track svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Hero chips and call to action. */
+.availability { border: 0; padding: 8px 14px; }
+.hero-objects .object-caption.glass { background: var(--glass-fill); padding: 7px 13px; border-radius: 999px; }
+.hero-link { padding-inline: 20px; }
+
+/* Cards with concentric corners (outer 24 = inner 16 + 8 inset). */
+.project-panel { border: 0; border-radius: 24px; }
+.platform-caption, .panel-footer { border-top-color: var(--glass-rim-soft); }
+.radio-artwork, .project-panel > .panel-artwork:not(.air-watch-artwork) { width: auto; margin: 8px 8px 0; border-radius: 16px; overflow: hidden; }
+.project-panel .air-watch-artwork img, #terrain-preview .terrain-preview-frame img { border-radius: 14px; }
+.poster-facts { border-top-color: var(--glass-rim-soft); }
+.project-panel .button--secondary { background: var(--glass-lens); border-color: transparent; }
+@media (hover: hover) and (pointer: fine) {
+  .project-panel .button--secondary:hover { background: var(--glass-rim-soft); border-color: transparent; }
+}
+
+/* Greg's integrations sit together in one tray. */
+.greg-integrations.glass { padding: 22px 14px 18px; border-radius: 24px; max-width: 390px; }
+
+.demo-note { color: var(--accent); font-weight: 650; }
+
+/* Poster frame: a thin black gallery frame with a soft sheen along the top edge. */
+.hero-objects .terrain-print {
+  --frame: 12px;
+  padding: var(--frame);
+  background: linear-gradient(160deg, #3a3a3a, #111 35%, #0b0b0b 70%, #262626);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .14), inset 0 0 0 1px rgb(255 255 255 / .05), 12px 22px 45px var(--shadow);
+}
+.hero-objects .terrain-print img { box-shadow: 0 0 0 1px rgb(0 0 0 / .6), 0 0 6px 1px rgb(0 0 0 / .5); }
+
+@media (max-width: 767px) {
+  .shell { padding-top: 78px; }
+  .glass-bar { top: calc(env(safe-area-inset-top, 0px) + 10px); gap: 8px; }
+  .nav-capsule { height: 48px; gap: 6px; padding: 0 4px 0 16px; }
+  .nav-capsule .wordmark { font-size: 20px; }
+  .nav-links a { padding: 0 11px; font-size: 12px; }
+  .theme-slot { --pad: 4px; }
+  /* No room to open to the right on a phone: the control opens leftward over the links. */
+  .theme-control { left: auto; right: 0; }
+  .project-panel { border-radius: 20px; }
+  .radio-artwork, .project-panel > .panel-artwork:not(.air-watch-artwork) { margin: 6px 6px 0; border-radius: 14px; }
+  .hero-objects .terrain-print { --frame: 8px; }
+}
+@media (max-width: 419px) {
+  .nav-links a { padding: 0 8px; }
+  .nav-links .external span { display: none; }
+}
