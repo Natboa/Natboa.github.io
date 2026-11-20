@@ -20,7 +20,8 @@
 @keyframes rise { from { opacity: 0; translate: 0 .5em; filter: blur(10px); } }
 
 /* Objects land with their own spring, then keep a slow float so the desk feels alive. */
-.hero-objects { perspective: 1400px; transform-style: preserve-3d; }
+/* No preserve-3d here: the desk tilts as one flat surface. A shared 3D context puts the
+   three objects in one plane, and Chrome then re-sorts them every frame, so they flicker. */
 .hero-objects .terrain-print { animation: land 1100ms var(--ease-spring) 300ms backwards, float 7s ease-in-out 1.4s infinite alternate; }
 .hero-objects .phone-object { animation: land 1100ms var(--ease-spring) 420ms backwards, float 6s ease-in-out 1.6s infinite alternate-reverse; }
 .hero-objects .eink-object { animation: land 1100ms var(--ease-spring) 540ms backwards, float 8s ease-in-out 1.8s infinite alternate; }
